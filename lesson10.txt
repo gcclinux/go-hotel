@@ -1,0 +1,26 @@
+package main
+
+import (
+	"log"
+	"time"
+)
+
+// Types & Structs
+
+type User struct {
+	FirstName   string
+	LastName    string
+	PhoneNumber string
+	Age         int
+	BirthDate   time.Time
+}
+
+func main() {
+	user := User{
+		FirstName: "Ricardo",
+		LastName:  "Wagemaker",
+	}
+
+	log.Println(user.FirstName, user.LastName, "Test Birthday", user.BirthDate)
+
+}
