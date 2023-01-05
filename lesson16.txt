@@ -1,0 +1,14 @@
+package main
+
+import (
+	"log"
+	"myapp/helpers"
+)
+
+func main() {
+
+	var myVar helpers.SomeType
+	myVar.TypeName = "Some Name"
+	log.Println(myVar.TypeName)
+
+}
