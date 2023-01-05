@@ -1,0 +1,3 @@
+20. How web applications work: the request/response lifecycle
+
+NO CODING, JUST A WHITE BOARD EXPLANATION
