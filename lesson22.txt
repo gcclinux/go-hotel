@@ -1,0 +1,5 @@
+22. Making our application module-ready
+
+Initiate go module 
+
+--> go mod init myapp
