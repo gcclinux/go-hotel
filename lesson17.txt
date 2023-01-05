@@ -1,0 +1,28 @@
+package main
+
+import (
+	"log"
+	"myapp/helpers"
+)
+
+// Channels are unic to Go - And channels are not that difficult, but they are incredibly useful.
+// They are a means of sending information from one part of your program to another part of your program very easily.
+
+const numPool = 1000
+
+func CalculateValue(intChan chan int) {
+	randomNumber := helpers.RandomNumber(numPool)
+	intChan <- randomNumber
+}
+
+func main() {
+	intChan := make(chan int)
+
+	// Defer means whatever comes after this keyword, defer, execute that as soon as the current function is done
+	defer close(intChan)
+
+	go CalculateValue((intChan))
+
+	num := <-intChan
+	log.Println(num)
+}
