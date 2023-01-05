@@ -1,3 +1,23 @@
 Udemy - Building Modern Web Applications with Go (Golang)
 
-Completed Lesson 12
+	
+# You never have to bother pointing a passing a pointer to a map.
+# You can just pass the map itself and that map will remain constant no matter where in the program it is accessed.
+# Another point to know about maps is maps are programmatically built into the system, not sorted.
+# So if you put things into a map in a certain order and then you try to access them later on, you cannot assume that they are going to be in the order.
+
+# If you don't know what data type you you're going to be storing in there, you can in fact, and this is not recommended, but you can put in type interface followed by an opening and closing curly brackets,
+# and that will actually store anything you want.
+# The problem is you have to cast it from what it is in the map back into what it needs to be in order to be useful for you.
+# So this is really kind of a kludge, and I wouldn't do that.
+
+
+# in GO a string is actually a slice of bytes or runes as runes are bytes.
+
+# Channels are unic to Go - And channels are not that difficult, but they are incredibly useful.
+# They are a means of sending information from one part of your program to another part of your program very easily.
+
+# the functions used in the JSON package in GO are called marshall and unmarshalled.
+
+# Run a test coverage on current program.
+--> go test -coverprofile=coverage.out && go tool cover -html=coverage.out
