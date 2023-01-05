@@ -1,0 +1,64 @@
+package main
+
+import (
+	"fmt"
+	"log"
+)
+
+//looping over data or range over data
+
+func main() {
+	// Initial value; condition to check; increment
+	for i := 0; i <= 10; i++ {
+		log.Println(i)
+	}
+
+	fmt.Println()
+
+	// slice of animals
+	animals := []string{"dog", "fish", "horse", "cow", "cat"}
+	for i, animal := range animals {
+		log.Println(i, animal)
+	}
+
+	fmt.Println()
+
+	animalz := make(map[string]string)
+	animalz["dog"] = "Fido"
+	animalz["cat"] = "Fluffy"
+
+	for i, animal := range animalz {
+		log.Println(i, animal)
+	}
+
+	fmt.Println()
+
+	//And that's because in go a string is actually a slice of bytes or runes as runes are bytes.
+
+	var firstLine = "Once upon a midnigh dreary"
+	for i, l := range firstLine {
+		fmt.Println(i, ":", l)
+	}
+
+	fmt.Println()
+
+	// custome struct
+	type User struct {
+		FirstName string
+		LastName  string
+		Age       int
+	}
+
+	// User slice
+	var users []User
+	users = append(users, User{"John", "Smith", 30})
+	users = append(users, User{"Mary", "Jones", 20})
+	users = append(users, User{"Sally", "Brown", 35})
+	users = append(users, User{"Alex", "Anderson", 50})
+
+	// range of users ignoring the index with _,
+	for _, l := range users {
+		log.Println(l.FirstName, l.LastName, l.Age)
+	}
+
+}
