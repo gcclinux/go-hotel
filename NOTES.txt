@@ -27,3 +27,5 @@ Udemy - Building Modern Web Applications with Go (Golang)
 --> go run *.go
 # Windows users execute or (Linux & Mac)
 --> go run .
+
+# Completed - 27. Reorganizing our code, and adding some basic styling to pages
