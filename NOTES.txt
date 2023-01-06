@@ -28,4 +28,7 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Windows users execute or (Linux & Mac)
 --> go run .
 
+# Go modules are package management for Go
+
 # Completed - 27. Reorganizing our code, and adding some basic styling to pages
+# Completed - 28. Enabling Go Modules and refactoring our code to use packages
