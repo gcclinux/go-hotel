@@ -21,3 +21,9 @@ Udemy - Building Modern Web Applications with Go (Golang)
 
 # Run a test coverage on current program.
 --> go test -coverprofile=coverage.out && go tool cover -html=coverage.out
+
+# Lesson 26 A note for Windows Users
+# Mac / Linux execute
+--> go run *.go
+# Windows users execute or (Linux & Mac)
+--> go run .
