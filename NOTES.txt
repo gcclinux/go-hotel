@@ -35,3 +35,6 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 27. Reorganizing our code, and adding some basic styling to pages
 # Completed - 28. Enabling Go Modules and refactoring our code to use packages
 # Completed - 29. Working with Layouts
+# Completed - 30. Building a simple template cache
+# Completed - 31. Building a more complex template cache
+# Completed - 32. A note about the next lectures

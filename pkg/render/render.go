@@ -2,71 +2,80 @@ package render
 
 // render.go - lesson 30 - simple templating cache system
 import (
-	"fmt"
+	"bytes"
 	"html/template"
 	"log"
 	"net/http"
+	"path/filepath"
 )
 
 // renderTemplate is where we will be rendering all templates through
-func RenderTemplateOriginal(w http.ResponseWriter, page string) {
-	t, err := template.ParseFiles("./templates/"+page, "./templates/base.layout.tmpl")
+func RenderTemplate(w http.ResponseWriter, page string) {
+	// create  a template cache
+
+	templatecache, err := createTemplateCache()
 	if err != nil {
-		log.Println(err)
+		log.Fatal("error creating createTemplateCache()", err)
 		return
 	}
 
-	err = t.Execute(w, nil)
-	if err != nil {
-		log.Println("error parsing templates:", err)
-		return
+	// get requested template from cache
+
+	myTemplate, ok := templatecache[page]
+	if !ok {
+		log.Fatal(err)
 	}
+
+	myBuffer := new(bytes.Buffer)
+	err = myTemplate.Execute(myBuffer, nil)
+	if err != nil {
+		log.Println("error comes from the map:", err)
+	}
+
+	// render the template
+
+	_, err = myBuffer.WriteTo(w)
+	if err != nil {
+		log.Println("error comes from the myBuffer:", err)
+	}
+
 }
 
-// templateCash it's a package level map variable
-var templateCash = make(map[string]*template.Template)
+func createTemplateCache() (map[string]*template.Template, error) {
+	// type 1 make mp
+	// myCache := make(map[string]*template.Template)
 
-func RenderTemplate(w http.ResponseWriter, t string) {
-	var tmpl *template.Template
-	var err error
+	// type 2 mmaking map and then just use curly brackets and make it an empty map.
+	myCache := map[string]*template.Template{}
 
-	// check to see if we already have te template in our cache
-	_, inMap := templateCash[t]
+	//get all of the files name *.page.tmpl from ./template
+	pages, err := filepath.Glob("./templates/*.page.tmpl")
+	if err != nil {
+		return myCache, err
+	}
 
-	if !inMap {
-		log.Println("creating template and adding to cache")
-		err = createTemplateCache(t)
+	// range through all files ending with *.page.tmpl
+	for _, page := range pages {
+		// strip of the path and leave only the file name it self
+		name := filepath.Base(page)
+		
+		templateset, err := template.New(name).ParseFiles(page)
 		if err != nil {
-			log.Println("error creating templates:", err)
+			return myCache, err
 		}
-	} else {
-		log.Println("using cache template")
+
+		matches, err := filepath.Glob("./templates/*.layout.tmpl")
+		if err != nil {
+			return myCache, err
+		}
+
+		if len(matches) > 0 {
+			templateset, err = templateset.ParseGlob("./templates/*.layout.tmpl")
+			if err != nil {
+				return myCache, err
+			}
+		}
+		myCache[name] = templateset
 	}
-
-	tmpl = templateCash[t]
-
-	err = tmpl.Execute(w, nil)
-	if err != nil {
-		log.Println("error executing templates", err)
-	}
-}
-
-func createTemplateCache(t string) error {
-	templates := []string{
-		/*
-			Now, one thing to bear in mind, as your application becomes more complex and you have more layouts
-			and you have more files, you're including partials, for example.
-			All you have to do is to add one entry for each of those files that are included in any page on your site.
-		*/
-		fmt.Sprintf("./templates/%s", t), "./templates/base.layout.tmpl",
-	}
-
-	tmpl, err := template.ParseFiles(templates...)
-	if err != nil {
-		return err
-	}
-	templateCash[t] = tmpl
-
-	return nil
-
+	return myCache, nil
 }
