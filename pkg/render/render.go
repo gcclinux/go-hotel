@@ -11,37 +11,35 @@ import (
 
 // renderTemplate is where we will be rendering all templates through
 func RenderTemplate(w http.ResponseWriter, page string) {
-	// create  a template cache
+	// get the template cache from the app config
+	
 
-	templatecache, err := createTemplateCache()
+	// create  a template cache
+	templatecache, err := CreateTemplateCache()
 	if err != nil {
 		log.Fatal("error creating createTemplateCache()", err)
 		return
 	}
 
 	// get requested template from cache
-
 	myTemplate, ok := templatecache[page]
 	if !ok {
 		log.Fatal(err)
 	}
 
 	myBuffer := new(bytes.Buffer)
-	err = myTemplate.Execute(myBuffer, nil)
-	if err != nil {
-		log.Println("error comes from the map:", err)
-	}
+
+	_ = myTemplate.Execute(myBuffer, nil)
 
 	// render the template
-
 	_, err = myBuffer.WriteTo(w)
 	if err != nil {
-		log.Println("error comes from the myBuffer:", err)
+		log.Println("error writing template to browser", err)
 	}
 
 }
 
-func createTemplateCache() (map[string]*template.Template, error) {
+func CreateTemplateCache() (map[string]*template.Template, error) {
 	// type 1 make mp
 	// myCache := make(map[string]*template.Template)
 
@@ -58,7 +56,7 @@ func createTemplateCache() (map[string]*template.Template, error) {
 	for _, page := range pages {
 		// strip of the path and leave only the file name it self
 		name := filepath.Base(page)
-		
+
 		templateset, err := template.New(name).ParseFiles(page)
 		if err != nil {
 			return myCache, err
