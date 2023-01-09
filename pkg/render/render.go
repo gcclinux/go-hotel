@@ -5,26 +5,37 @@ import (
 	"bytes"
 	"html/template"
 	"log"
+	"myapp/pkg/config"
 	"net/http"
 	"path/filepath"
 )
 
-// renderTemplate is where we will be rendering all templates through
-func RenderTemplate(w http.ResponseWriter, page string) {
-	// get the template cache from the app config
-	
+//var functions = template.FuncMap{}
 
-	// create  a template cache
-	templatecache, err := CreateTemplateCache()
-	if err != nil {
-		log.Fatal("error creating createTemplateCache()", err)
-		return
+var app *config.AppConfig
+
+// RenderTemplate sets the config for the template package
+func NewTemplates(a *config.AppConfig) {
+	app = a
+}
+
+// renderTemplates is where we will be rendering all templates through
+func RenderTemplate(w http.ResponseWriter, page string) {
+	
+	var templatecache map[string]*template.Template
+
+	if app.UseCache {
+		// get the template cache from the app config
+		templatecache = app.TemplateCache
+	} else {
+		templatecache, _ = CreateTemplateCache()
 	}
+	// get the template cache from the app config
 
 	// get requested template from cache
 	myTemplate, ok := templatecache[page]
 	if !ok {
-		log.Fatal(err)
+		log.Fatal("Could not get template from template cash")
 	}
 
 	myBuffer := new(bytes.Buffer)
@@ -32,7 +43,7 @@ func RenderTemplate(w http.ResponseWriter, page string) {
 	_ = myTemplate.Execute(myBuffer, nil)
 
 	// render the template
-	_, err = myBuffer.WriteTo(w)
+	_, err := myBuffer.WriteTo(w)
 	if err != nil {
 		log.Println("error writing template to browser", err)
 	}
