@@ -1,5 +1,6 @@
 If you are using VS Code...
 
-If you are using Visual Studio Code, as you work your way through the next lecture you'll see that VS Code gives you a warning. Just follow along -- I am deliberately introducing an "import cycle" error in this lecture, just so you'll realize what it is, and how to fix it.
+If you are using Visual Studio Code, as you work your way through the next lecture you'll see that VS Code gives you a warning. Just follow along 
+-- I am deliberately introducing an "import cycle" error in this lecture, just so you'll realize what it is, and how to fix it.
 
 Visual Studio Code is smart enough to recognize the problem, while GoLand (for reasons I'll never understand) is not yet smart enough to do so

@@ -17,7 +17,7 @@ func main() {
 
 	myTemplateCache, err := render.CreateTemplateCache()
 	if err != nil {
-		log.Fatal("cannot create templatr cache", err)
+		log.Fatal("main.go cannot create template cache -->", err)
 	}
 
 	app.TemplateCache = myTemplateCache

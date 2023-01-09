@@ -40,3 +40,6 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 32. A note about the next lectures
 # Completed - 33. Setting application wide configuration
 # Completed - 34. Why the application wide config is so useful
+# Completed - 35. Optimizing our template cache by using an application config
+# Completed - 36. A note about the next lecture
+# Completed - 37. Sharing data with templates
