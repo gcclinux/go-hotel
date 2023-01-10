@@ -43,3 +43,5 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 35. Optimizing our template cache by using an application config
 # Completed - 36. A note about the next lecture
 # Completed - 37. Sharing data with templates
+# Completed - 38. Using pat for routing
+# Completed - 39. Using chi for routing
