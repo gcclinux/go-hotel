@@ -30,7 +30,13 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # New run format fro all platforms
 --> go run ./cmd/web
 
+# CSRFToken = That CSRF token stands for cross site request forgery token.
+
 # Go modules are package management for Go
+
+--> go get -u github.com/bmizerany/pat
+--> go get -u github.com/justinas/nosurf
+--> go get -u github.com/go-chi/chi/v5
 
 # Completed - 27. Reorganizing our code, and adding some basic styling to pages
 # Completed - 28. Enabling Go Modules and refactoring our code to use packages
@@ -43,5 +49,7 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 35. Optimizing our template cache by using an application config
 # Completed - 36. A note about the next lecture
 # Completed - 37. Sharing data with templates
-# Completed - 38. Using pat for routing
-# Completed - 39. Using chi for routing
+# Completed - 38. Using pat for routing (created router.go & updated main.go)
+# Completed - 39. Using chi for routing (updated router.go & main.go)
+# Completed - 40. Developing our own middleware (created middleware.go & updated route.go & added nosurf)
+# Starting - 41. Installing and setting up a sessions package
