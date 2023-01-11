@@ -10,6 +10,14 @@
                 {{index .StringMap "test"}}
             </p>
 
+            <p>
+                {{if  ne (index .StringMap "remote_ip") ""}}
+                    You remote IP address is {{index .StringMap "remote_ip"}}
+                {{else}}
+                    I don'tknow your address yet, go to home page
+                {{end}}
+            </p>
+
         </div>
     </div>
 </div>

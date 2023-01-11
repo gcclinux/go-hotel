@@ -54,4 +54,4 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 39. Using chi for routing (updated router.go & main.go)
 # Completed - 40. Developing our own middleware (created middleware.go & updated route.go & added nosurf)
 # Completed - 41. Installing and setting up a sessions package (itroduced package scs)
-# Starting  - 42. Experimenting with sessions
+# Completed - 42. Experimenting with sessions
