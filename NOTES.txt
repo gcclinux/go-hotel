@@ -56,4 +56,4 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 41. Installing and setting up a sessions package (itroduced package scs)
 # Completed - 42. Experimenting with sessions
 # Completed - 43. What are we going to build?
-# NEXT - 44. Setting up our project
+# Completed - 44. Setting up our project
