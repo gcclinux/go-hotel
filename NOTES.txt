@@ -57,4 +57,5 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 42. Experimenting with sessions
 # Completed - 43. What are we going to build?
 # Completed - 44. Setting up our project
-# Started - 45. Enabling static files
+# Completed - 45. Enabling static files
+# Starting - 46. Creating pages as HTML
