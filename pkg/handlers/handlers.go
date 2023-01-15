@@ -1,11 +1,14 @@
 package handlers
 
 import (
+	"fmt"
 	"myapp/pkg/config"
 	"myapp/pkg/models"
 	"myapp/pkg/render"
 	"net/http"
 )
+
+var app config.AppConfig
 
 // Repo the repository used by the handlers
 var Repo *Repository
@@ -29,6 +32,9 @@ func NewHandlers(r *Repository) {
 
 // Home is the home page handler
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
+
+	fmt.Println("handlers.go: app.InProduction", app.InProduction)
+
 	remoteIP := r.RemoteAddr
 	m.App.Session.Put(r.Context(), "remote_ip", remoteIP)
 
