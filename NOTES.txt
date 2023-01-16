@@ -62,3 +62,4 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 45. Enabling static files
 # Completed - 46. Creating pages as HTML (this was covered already at start of lessons)
 # Completed - 47. Creating a landing page (integrated into templates directly)
+# Starting - 48. Creating a page for each room
