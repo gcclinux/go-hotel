@@ -61,7 +61,17 @@ func (m *Repository) General(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "generals.page.tmpl", &models.TemplateData{})
 }
 
-// General is the Major's Suite page handler
+// Major is the Major's Suite page handler
 func (m *Repository) Major(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "majors.page.tmpl", &models.TemplateData{})
+}
+
+// Contact is the contact page used by the handler
+func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
+}
+
+// Book is the book now page used by the handler
+func (m *Repository) Book(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "reservation.page.tmpl", &models.TemplateData{})
 }
