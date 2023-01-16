@@ -39,6 +39,8 @@ Udemy - Building Modern Web Applications with Go (Golang)
 --> go get -u github.com/go-chi/chi/v5
 --> go get -u github.com/alexedwards/scs/v2
 
+# Lesson 47 - in style element-size: 1em; = stands for the width of a capital letter M.
+
 # Completed - 27. Reorganizing our code, and adding some basic styling to pages
 # Completed - 28. Enabling Go Modules and refactoring our code to use packages
 # Completed - 29. Working with Layouts
@@ -59,3 +61,4 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 44. Setting up our project
 # Completed - 45. Enabling static files
 # Completed - 46. Creating pages as HTML (this was covered already at start of lessons)
+# Completed - 47. Creating a landing page (integrated into templates directly)
