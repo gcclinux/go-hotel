@@ -63,12 +63,21 @@
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <h1 class="text-center">This will be the BOOK NOW page</h1>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <a href="/make-reservation" class="btn btn-success">Check Availability</a>
+                    <h1 class="mt-5">Search for Availability</h1>
+                    <form action="/make-reservation" method="get">
+                      <div class="mb-3">
+                        <label for="start_date" class="form-label">Starting Date</label>
+                        <input type="date" class="form-control" id="start_date" name="start_date" aria-describedby="startDateHelp">
+                        <div id="startDateHelp" class="form-text">Enter your starting date in the form YYYY-MM-DD.</div>
+                      </div>
+                      <div class="mb-3">
+                        <label for="end_date" class="form-label">End Date</label>
+                        <input type="date" class="form-control" id="end_date" name="end_date" aria-describedby="endDateHelp">
+                        <div id="endDateHelp" class="form-text">Enter your leaving date in the form YYYY-MM-DD.</div>
+                      </div>
+                      <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+
                 </div>
             </div>
         </div>
