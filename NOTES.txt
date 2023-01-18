@@ -66,4 +66,5 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 49. Adding a form to search for availability
 # Completed - 50. Improving our form
 # Completed - 51. Creating the reservation page
-# Starting - 52. What is Javascript, and why should I care?
+# Completed - 52. What is Javascript, and why should I care?
+# Starting - 53. Making a better date picker
