@@ -59,29 +59,38 @@
                 </ul>
               </div>
             </div>
-        </nav>
+          </nav>
         <div class="container">
             <div class="row">
                 <div class="col">
-                    <img src="/static/images/generals-quarters.png" class="img-fluid img-thumbnail mx-auto d-block room-image" alt="general-quarters">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h1 class="text-center mt-4">General's  Quarters</h1>
-                    <p>
-                        Your home away from home, set on the majestic waters on the atlantic oceon, this will be a holiday to remember.
-                        This holiday season, give yourself a holiday you will never forget.” This works well to relax, clear your mind
-                        or completely setup for a newyear “A Gift for Every Reason and Every Season.”
-                        Your home away from home, set on the majestic waters on the atlantic oceon, this will be a holiday to remember.
-                        This holiday season, give yourself a holiday you will never forget.” This works well to relax, clear your mind
-                        or completely setup for a newyear “A Gift for Every Reason and Every Season.”
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <a href="/make-reservation-gq" class="btn btn-success">Check Availability</a>
+                  <h1>Make Reservation</h1>
+
+                  <form method="post" action="" class="needs-validation" novalidate>
+
+                    <div class="form-group mt-5">
+                      <label for="first_name">Fist name:</label>
+                      <input type="text" name="first_name" id="first_name" class="form-control" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="last_name">Last name:</label>
+                      <input type="text" name="last_name" id="last_name" class="form-control" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="email">Email:</label>
+                      <input type="email" name="email" id="email" class="form-control" required autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                      <label for="phone">Phone Number:</label>
+                      <input type="text" name="phone" id="phone" class="form-control" required autocomplete="off">
+                    </div>
+                    <hr>
+
+                    <input type="submit" class="btn btn-primary" value="Make reservation">
+
+                  </form>
                 </div>
             </div>
         </div>

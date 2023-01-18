@@ -63,4 +63,7 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 46. Creating pages as HTML (this was covered already at start of lessons)
 # Completed - 47. Creating a landing page (integrated into templates directly)
 # Completed - 48. Creating a page for each room
-# Starting - 49. Adding a form to search for availability
+# Completed - 49. Adding a form to search for availability
+# Completed - 50. Improving our form
+# Completed - 51. Creating the reservation page
+# Starting - 52. What is Javascript, and why should I care?
