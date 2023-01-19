@@ -68,4 +68,5 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 51. Creating the reservation page
 # Completed - 52. What is Javascript, and why should I care?
 # Completed - 53. Making a better date picker
-# Starting - 54. Custom alerts using Notie
+# Completed - 54. Custom alerts using Notie
+# Starting - 55. Creating modals with SweetAlert

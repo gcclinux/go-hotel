@@ -134,6 +134,8 @@
         crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.2/dist/js/datepicker-full.min.js"></script>
 <script src="https://unpkg.com/notie"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <script>
     console.log("I am printing from javascript");
 
@@ -157,6 +159,8 @@
 
     document.getElementById("colorButton").addEventListener("click", function () {
       notify("This is my message", "error")
+      notifyModal("title", "<em>Hello, world!</em>", "success", "My button text")
+      
     })
 
     const elem = document.getElementById('reservation-dates');
@@ -170,6 +174,16 @@
         text: msg,
       })
     }
+
+    function notifyModal(title, text, icon, button){
+        Swal.fire({
+        icon: icon,
+        title: title,
+        html: text,
+        confirmButtonText: button
+    })
+    }
+
 
 </script>
 
