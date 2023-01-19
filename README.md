@@ -12,6 +12,7 @@ $ *got get -u github.com/alexedwards/scs/v2*  <br>
 $ *go get -u github.com/justinas/nosurf*  <br>
 **Uses Notie(https://github.com/jaredreich/notie) clean and simple notification popup**  <br>
 ```<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">```
+```<script src="https://unpkg.com/notie"></script>```
 
 
 Hotel Bookings is a Web Application project and self learning through Udemy..  <br>
