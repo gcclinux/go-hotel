@@ -71,4 +71,5 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 54. Custom alerts using Notie
 # Completed - 55. Creating modals with SweetAlert
 # Completed - 56. Implementing a Javascript module
-# Starting - 57. Adding custom alerts in our Javascript module
+# Completed - 57. Adding custom alerts in our Javascript module
+# Starting - 58. Using our Javascript module on the "Book Now" button
