@@ -137,7 +137,7 @@
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 <script>
-    console.log("I am printing from javascript");
+    let attention = Prompt();
 
     (function() {
         'use strict';
@@ -158,9 +158,9 @@
     })();
 
     document.getElementById("colorButton").addEventListener("click", function () {
-      notify("This is my message", "error")
-      notifyModal("title", "<em>Hello, world!</em>", "success", "My button text")
-      
+    //   notify("This is my message", "error")
+    //   notifyModal("title", "<em>Hello, world!</em>", "success", "My button text")
+      attention.toast();
     })
 
     const elem = document.getElementById('reservation-dates');
@@ -182,6 +182,21 @@
         html: text,
         confirmButtonText: button
     })
+    }
+
+    function Prompt(){
+        let toast = function(){
+            console.log("clicked button and got toast")
+        }
+
+        let success = function(){
+            console.log("clicked button and got success")
+        }
+
+        return {
+            toast: toast,
+            success: success,
+        }
     }
 
 

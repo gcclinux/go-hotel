@@ -69,4 +69,6 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 52. What is Javascript, and why should I care?
 # Completed - 53. Making a better date picker
 # Completed - 54. Custom alerts using Notie
-# Starting - 55. Creating modals with SweetAlert
+# Completed - 55. Creating modals with SweetAlert
+# Completed - 56. Implementing a Javascript module
+# Starting - 57. Adding custom alerts in our Javascript module
