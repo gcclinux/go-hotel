@@ -4,7 +4,7 @@ Hotel Bookings and reservations is a Web Application project, self toucht throug
 
 Built in Go version 1.19.4
 
-<li>**Uses the chi router(https://github.com/go-chi/chi/) router for HTTP services**  <br>
+**Uses the chi router(https://github.com/go-chi/chi/) router for HTTP services**  <br>
 $ *go get -u github.com/go-chi/chi/v5*  <br>
 **Use SCS(https://github.com/alexedwards/scs/v2) session management**  <br>
 $ *got get -u github.com/alexedwards/scs/v2*  <br>
