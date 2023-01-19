@@ -11,8 +11,8 @@ $ *got get -u github.com/alexedwards/scs/v2*  <br>
 **Uses nosuft(https://github.com/justinas/nosurf) CSRF protection middleware**  <br>
 $ *go get -u github.com/justinas/nosurf*  <br>
 **Uses Notie(https://github.com/jaredreich/notie) clean and simple notification popup**  <br>
-```<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">```
-```<script src="https://unpkg.com/notie"></script>```
+Stylesheet: ``<link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">`` <br>
+javascript: ``<script src="https://unpkg.com/notie"></script>`` <br>
 
 
 Hotel Bookings is a Web Application project and self learning through Udemy..  <br>
