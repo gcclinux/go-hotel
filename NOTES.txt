@@ -41,6 +41,8 @@ Udemy - Building Modern Web Applications with Go (Golang)
 
 # Lesson 47 - in style element-size: 1em; = stands for the width of a capital letter M.
 
+# Lesson 58 - greate example of using sweetalert2 for popup datepicker in page.
+
 # Completed - 27. Reorganizing our code, and adding some basic styling to pages
 # Completed - 28. Enabling Go Modules and refactoring our code to use packages
 # Completed - 29. Working with Layouts
@@ -72,4 +74,5 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 55. Creating modals with SweetAlert
 # Completed - 56. Implementing a Javascript module
 # Completed - 57. Adding custom alerts in our Javascript module
-# Starting - 58. Using our Javascript module on the "Book Now" button
+# Completed - 58. Using our Javascript module on the "Book Now" button
+# Start - 59. What is CSS, and how does it work?
