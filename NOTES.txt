@@ -43,6 +43,10 @@ Udemy - Building Modern Web Applications with Go (Golang)
 
 # Lesson 58 - greate example of using sweetalert2 for popup datepicker in page.
 
+# Style sheet directives
+--> .className (to use class always start with a . )
+--> #idName (to use id tag always start with a # )
+
 # Completed - 27. Reorganizing our code, and adding some basic styling to pages
 # Completed - 28. Enabling Go Modules and refactoring our code to use packages
 # Completed - 29. Working with Layouts
@@ -75,4 +79,5 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 56. Implementing a Javascript module
 # Completed - 57. Adding custom alerts in our Javascript module
 # Completed - 58. Using our Javascript module on the "Book Now" button
-# Start - 59. What is CSS, and how does it work?
+# Completed - 59. What is CSS, and how does it work?
+# Starting - 60. Converting our pages to Go templates
