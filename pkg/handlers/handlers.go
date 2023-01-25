@@ -40,17 +40,9 @@ func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 
 // About is the home page handler
 func (m *Repository) About(w http.ResponseWriter, r *http.Request) {
-	// perform some logic
-	stringMap := make(map[string]string)
-	stringMap["test"] = "hello, again"
-
-	remoteIP := m.App.Session.GetString(r.Context(), "remote_ip")
-	stringMap["remote_ip"] = remoteIP
 
 	// send data to teplate
-	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{
-		StringMap: stringMap,
-	})
+	render.RenderTemplate(w, "about.page.tmpl", &models.TemplateData{})
 }
 
 // General is the General's Quarters page handler
@@ -68,12 +60,12 @@ func (m *Repository) Contact(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "contact.page.tmpl", &models.TemplateData{})
 }
 
-// Book is the book now page used by the handler
-func (m *Repository) Book(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, "reservation.page.tmpl", &models.TemplateData{})
+// Availability is the Availability search page used by the handler
+func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
+	render.RenderTemplate(w, "search-availability.page.tmpl", &models.TemplateData{})
 }
 
-// Book is the book now page used by the handler
+// MkReservation is the book now page used by the handler
 func (m *Repository) MkReservation(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, "mk-reservation.page.tmpl", &models.TemplateData{})
 }

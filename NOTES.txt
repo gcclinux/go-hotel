@@ -80,4 +80,44 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # Completed - 57. Adding custom alerts in our Javascript module
 # Completed - 58. Using our Javascript module on the "Book Now" button
 # Completed - 59. What is CSS, and how does it work?
-# Starting - 60. Converting our pages to Go templates
+
+Saving for later:
+--> search-availability.page.tmpl
+    <div class="row">
+        <div class="col">
+            <p id="myParagraph">This is some text.</p>
+            <p class="paraClass secondClass">This is some text.</p>
+            <p class="paraClass">This is some text.</p>
+            <p id="lastPara">This is some text.</p>
+            <p>
+                <button id="colorButton" class="btn btn-outline-secondary">Click me</button>
+            </p>
+        </div>
+    </div>
+
+--> base.layout.tmpl - footer
+            document.getElementById("colorButton").addEventListener("click", function () {
+            //   notify("This is my message", "error")
+            //   notifyModal("title", "<em>Hello, world!</em>", "success", "My button text")
+            //  attention.toast({msg: "Hello from Toast", icon: "error"})
+            //   attention.error({msg: "Hello with Error", footer: "This is my foot"})
+            let html = `
+            <form id="check-availability-form" action="" method="post novalidate" class="needs-validation">
+                <div class="form-row">
+                    <div class="col">
+                        <div class="form-row" id="reservation-dates-modal">
+                            <div class="col">
+                                <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
+                            </div>
+                            <div class="col">
+                                <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            `
+            attention.custom({msg: html, title: "Choose your dates"})
+            })
+# Completed - 60. Converting our pages to Go templates
+# Starting - 61. Creating handlers for our forms & adding CSRF Protection

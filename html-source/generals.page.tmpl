@@ -1,92 +1,57 @@
-<!doctype html>
-<html lang="en">
+{{template "base" .}}
 
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{{define "content"}}
+<div class="container">
+    <div class="row">
+        <div class="col">
+            <img src="/static/images/generals-quarters.png" class="img-fluid img-thumbnail mx-auto d-block room-image" alt="general-quarters">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <h1 class="text-center mt-4">General's  Quarters</h1>
+            <p>
+                Your home away from home, set on the majestic waters on the atlantic oceon, this will be a holiday to remember.
+                This holiday season, give yourself a holiday you will never forget.” This works well to relax, clear your mind
+                or completely setup for a newyear “A Gift for Every Reason and Every Season.”
+                Your home away from home, set on the majestic waters on the atlantic oceon, this will be a holiday to remember.
+                This holiday season, give yourself a holiday you will never forget.” This works well to relax, clear your mind
+                or completely setup for a newyear “A Gift for Every Reason and Every Season.”
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col text-center">
+            <a id="check-availability-button" href="#!" class="btn btn-success">Check Availability</a>
+        </div>
+    </div>
+</div>
 
-        <title>My Nice Page</title>
-
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css"
-          integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.1.2/dist/css/datepicker-bs4.min.css">   
-        <link rel="stylesheet" type="text/css" href="https://unpkg.com/notie/dist/notie.min.css">
-        <link rel="stylesheet" type="text/css" href="/static/css/style.css">
-    </head>
-
-    <body>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary navbar-dark bg-dark">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#">Navbar</a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                  <li class="nav-item">
-                    <a class="nav-link active" aria-current="page" href="/">Home</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/about">About</a>
-                  </li>
-                  <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Rooms
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="/generals-quarters">General's Quarters</a></li>
-                      <li><a class="dropdown-item" href="/majors-suite">Major's Suite</a></li>
-                    </ul>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/reservation" tabindex="-1">Book Now</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/contact" tabindex="-1">Contacts</a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-        </nav>
-        <div class="container">
-            <div class="row">
-                <div class="col">
-                    <img src="/static/images/generals-quarters.png" class="img-fluid img-thumbnail mx-auto d-block room-image" alt="general-quarters">
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <h1 class="text-center mt-4">General's  Quarters</h1>
-                    <p>
-                        Your home away from home, set on the majestic waters on the atlantic oceon, this will be a holiday to remember.
-                        This holiday season, give yourself a holiday you will never forget.” This works well to relax, clear your mind
-                        or completely setup for a newyear “A Gift for Every Reason and Every Season.”
-                        Your home away from home, set on the majestic waters on the atlantic oceon, this will be a holiday to remember.
-                        This holiday season, give yourself a holiday you will never forget.” This works well to relax, clear your mind
-                        or completely setup for a newyear “A Gift for Every Reason and Every Season.”
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col text-center">
-                    <a href="/make-reservation-gq" class="btn btn-success">Check Availability</a>
+{{end}}
+{{ define "js" }}
+    <script>
+    document.getElementById("check-availability-button").addEventListener("click", function () {
+    //   notify("This is my message", "error")
+    //   notifyModal("title", "<em>Hello, world!</em>", "success", "My button text")
+    //  attention.toast({msg: "Hello from Toast", icon: "error"})
+    //   attention.error({msg: "Hello with Error", footer: "This is my foot"})
+    let html = `
+    <form id="check-availability-form" action="" method="post novalidate" class="needs-validation">
+        <div class="form-row">
+            <div class="col">
+                <div class="form-row" id="reservation-dates-modal">
+                    <div class="col">
+                        <input disabled required class="form-control" type="text" name="start" id="start" placeholder="Arrival">
+                    </div>
+                    <div class="col">
+                        <input disabled required class="form-control" type="text" name="end" id="end" placeholder="Departure">
+                    </div>
                 </div>
             </div>
         </div>
-
-        <div class="row my-footer">
-            <div class="col">
-                Left    
-            </div>
-            <div class="col">
-                Center
-            </div>
-            <div class="col">
-                Right
-            </div>
-        </div>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js" integrity="sha384-mQ93GR66B00ZXjt0YO5KlohRA5SY2XofN4zfuZxLkoj1gXtW8ANNCe9d5Y3eG5eD" crossorigin="anonymous"></script>  
-    </body>
-</html>
+    </form>
+    `
+    attention.custom({msg: html, title: "Choose your dates"})
+    })  
+    </script>
+{{end}}
