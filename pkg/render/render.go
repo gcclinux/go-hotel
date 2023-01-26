@@ -10,23 +10,26 @@ import (
 	"myapp/pkg/models"
 	"net/http"
 	"path/filepath"
+
+	"github.com/justinas/nosurf"
 )
 
 //var functions = template.FuncMap{}
 
 var app *config.AppConfig
 
-// RenderTemplate sets the config for the template package
+// RenderTemplate sets the config for the templ8ate package
 func NewTemplates(a *config.AppConfig) {
 	app = a
 }
 
-func AddDefaultData(td *models.TemplateData) *models.TemplateData {
+func AddDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateData {
+	td.CSRFToken = nosurf.Token(r)
 	return td
 }
 
 // renderTemplates is where we will be rendering all templates through
-func RenderTemplate(w http.ResponseWriter, page string, templateData *models.TemplateData) {
+func RenderTemplate(w http.ResponseWriter, r *http.Request, page string, templateData *models.TemplateData) {
 
 	var templatecache map[string]*template.Template
 
@@ -45,7 +48,7 @@ func RenderTemplate(w http.ResponseWriter, page string, templateData *models.Tem
 	}
 
 	myBuffer := new(bytes.Buffer)
-	templateData = AddDefaultData(templateData)
+	templateData = AddDefaultData(templateData, r)
 	_ = myTemplate.Execute(myBuffer, templateData)
 
 	// render the template
