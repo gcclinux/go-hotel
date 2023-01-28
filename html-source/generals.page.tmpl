@@ -54,15 +54,39 @@
         attention.custom({
             msg: html, 
             title: "Choose your dates",
+            willOpen: () => {
+                            const elem = document.getElementById('reservation-dates-modal');
+                            const rp = new DateRangePicker(elem, {
+                                format: 'yyyy-mm-dd',
+                                showOnFocus: true,
+                            })
+                        },
+            
+            didOpen: () => {
+                document.getElementById('start').removeAttribute('disabled');
+                document.getElementById('end').removeAttribute('disabled');
+            },
+
             callback: function(result){
                 console.log("called");
 
-                fetch('/search-availability-json')
+                /* And here in the second one I created a form data variable that contains all of the elements, all of
+                the inputs from the form that I stored in that that variable named as form.
+                So now I have exactly what I need to post with one exception. */
+                let form = document.getElementById("check-availability-form");
+                let formData = new FormData(form);
+                formData.append("csrf_token", "{{.CSRFToken}}");
+                // ABove line parcing Go template data to JS
+
+                fetch('/search-availability-json', {
+                    method: "post",
+                    body: formData,
+                })
                 .then(response => response.json())
                 .then(data => {
                     console.log(data);
-                    console.log(date.ok);
-                    console.log(date.message);
+                    console.log(data.ok);
+                    console.log(data.message);
                 })
             }
         });
