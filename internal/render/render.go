@@ -5,9 +5,9 @@ import (
 	"bytes"
 	"html/template"
 	"log"
-	"myapp/pkg/config"
+	"myapp/internal/config"
 
-	"myapp/pkg/models"
+	"myapp/internal/models"
 	"net/http"
 	"path/filepath"
 

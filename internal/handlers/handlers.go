@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"fmt"
 	"log"
-	"myapp/pkg/config"
-	"myapp/pkg/models"
-	"myapp/pkg/render"
+	"myapp/internal/config"
+	"myapp/internal/models"
+	"myapp/internal/render"
 	"net/http"
 )
 

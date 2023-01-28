@@ -124,4 +124,4 @@ Saving for later:
 # Completed - 62. Creating a handler that return JSON
 # Completed - 63. Sending & processing an AJAX request
 # Completed - 64. Sending AJAX post and generalizing our custom
-# Starting - 65. Refactoring to use internal packages
+# Completed - 65. Refactoring to use internal packages
