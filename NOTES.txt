@@ -120,4 +120,5 @@ Saving for later:
             attention.custom({msg: html, title: "Choose your dates"})
             })
 # Completed - 60. Converting our pages to Go templates
-# Starting - 61. Creating handlers for our forms & adding CSRF Protection
+# Completed - 61. Creating handlers for our forms & adding CSRF Protection (GET / POST / FORM / NoSurf)
+# Starting - 62. Creating a handler that return JSON
