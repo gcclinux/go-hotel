@@ -121,4 +121,5 @@ Saving for later:
             })
 # Completed - 60. Converting our pages to Go templates
 # Completed - 61. Creating handlers for our forms & adding CSRF Protection (GET / POST / FORM / NoSurf)
-# Starting - 62. Creating a handler that return JSON
+# Completed - 62. Creating a handler that return JSON
+# Completed - 63. Sending & processing an AJAX request
