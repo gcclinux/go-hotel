@@ -1,16 +1,15 @@
 {{template "base" .}}
 
 {{define "content"}}
-
 <div class="container">
     <div class="row">
         <div class="col">
-            <img src="/static/images/marjors-suite.png" class="img-fluid img-thumbnail mx-auto d-block room-image" alt="majors-suite">
+            <img src="/static/images/generals-quarters.png" class="img-fluid img-thumbnail mx-auto d-block room-image" alt="general-quarters">
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <h1 class="text-center mt-4">Major's Suite</h1>
+            <h1 class="text-center mt-4">General's  Quarters</h1>
             <p>
                 Your home away from home, set on the majestic waters on the atlantic oceon, this will be a holiday to remember.
                 This holiday season, give yourself a holiday you will never forget.” This works well to relax, clear your mind
@@ -34,7 +33,7 @@
     document.getElementById("check-availability-button").addEventListener("click", function () {
     //   notify("This is my message", "error")
     //   notifyModal("title", "<em>Hello, world!</em>", "success", "My button text")
-    //   attention.toast({msg: "Hello from Toast", icon: "error"})
+    //  attention.toast({msg: "Hello from Toast", icon: "error"})
     //   attention.error({msg: "Hello with Error", footer: "This is my foot"})
     let html = `
     <form id="check-availability-form" action="" method="post novalidate" class="needs-validation">
@@ -52,7 +51,21 @@
         </div>
     </form>
     `
-    attention.custom({msg: html, title: "Choose your dates"})
+        attention.custom({
+            msg: html, 
+            title: "Choose your dates",
+            callback: function(result){
+                console.log("called");
+
+                fetch('/search-availability-json')
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    console.log(date.ok);
+                    console.log(date.message);
+                })
+            }
+        });
     })  
     </script>
 {{end}}

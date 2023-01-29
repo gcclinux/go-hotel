@@ -2,9 +2,9 @@ package main
 
 import (
 	"log"
-	"myapp/pkg/config"
-	"myapp/pkg/handlers"
-	"myapp/pkg/render"
+	"myapp/internal/config"
+	"myapp/internal/handlers"
+	"myapp/internal/render"
 	"net/http"
 	"time"
 

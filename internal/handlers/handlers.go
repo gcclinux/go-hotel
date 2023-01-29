@@ -1,10 +1,12 @@
 package handlers
 
 import (
+	"encoding/json"
 	"fmt"
-	"myapp/pkg/config"
-	"myapp/pkg/models"
-	"myapp/pkg/render"
+	"log"
+	"myapp/internal/config"
+	"myapp/internal/models"
+	"myapp/internal/render"
 	"net/http"
 )
 
@@ -66,7 +68,7 @@ func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
 	render.RenderTemplate(w, r, "search-availability.page.tmpl", &models.TemplateData{})
 }
 
-// Availability is the Availability search page used by the handler
+// PostAvailability is the PostAvailability search page used by the handler
 func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	// And that directive says, take whatever you see inside the parentheses, hear this string and convert
 	// it to a slice of bytes.
@@ -76,6 +78,28 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	end := r.Form.Get("end")
 
 	w.Write([]byte(fmt.Sprintf("Start date is %s and end date is %s", start, end)))
+}
+
+type jsonResponse struct {
+	OK      bool   `json:"ok"`
+	Message string `json:"message"`
+}
+
+// AvailabilityJSON handles request for availability and send json
+func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
+	resp := jsonResponse{
+		OK:      false,
+		Message: "Available",
+	}
+
+	out, err := json.MarshalIndent(resp, "", "	")
+	if err != nil {
+		log.Println(err)
+	}
+
+	//log.Println(string(out))
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(out)
 }
 
 // MkReservation is the book now page used by the handler
