@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"myapp/internal/config"
+	"myapp/internal/forms"
 	"myapp/internal/models"
 	"myapp/internal/render"
 	"net/http"
@@ -102,7 +103,14 @@ func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
 	w.Write(out)
 }
 
-// MkReservation is the book now page used by the handler
+// MkReservation renders the make a reservation page and display form
 func (m *Repository) MkReservation(w http.ResponseWriter, r *http.Request) {
-	render.RenderTemplate(w, r, "mk-reservation.page.tmpl", &models.TemplateData{})
+	render.RenderTemplate(w, r, "make-reservation.page.tmpl", &models.TemplateData{
+		Form: forms.New(nil),
+	})
+}
+
+// PostMkReservation handles the posting of a reservation form
+func (m *Repository) PostMkReservation(w http.ResponseWriter, r *http.Request) {
+
 }
