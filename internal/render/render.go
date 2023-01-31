@@ -30,7 +30,6 @@ func AddDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateDa
 
 // renderTemplates is where we will be rendering all templates through
 func RenderTemplate(w http.ResponseWriter, r *http.Request, page string, templateData *models.TemplateData) {
-
 	var templatecache map[string]*template.Template
 
 	if app.UseCache {
