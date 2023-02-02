@@ -115,13 +115,25 @@
             }
         
             function notifyModal(title, text, icon, button){
-                Swal.fire({
-                icon: icon,
-                title: title,
-                html: text,
-                confirmButtonText: button
-            })
+                    Swal.fire({
+                    icon: icon,
+                    title: title,
+                    html: text,
+                    confirmButtonText: button
+                })
             }
+
+            {{with .Error}}
+            notify("{{.}}", "error")
+            {{end}}
+
+            {{with .Flash}}
+            notify("{{.}}", "flash")
+            {{end}}
+        
+            {{with .Warning}}
+            notify("{{.}}", "warning")
+            {{end}}
         
             function Prompt(){
                 let toast = function(c){
