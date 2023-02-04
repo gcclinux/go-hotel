@@ -15,5 +15,6 @@ Stylesheet: ``<link rel="stylesheet" type="text/css" href="https://unpkg.com/not
 Javascript: ``<script src="https://unpkg.com/notie"></script>`` <br>
 **Uses SweetAlert2(https://sweetalert2.github.io/) beautiful, responsive, customizable popup boxes** <br>
 JavaScript: ``<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>`` <br>
+**Uses govalidator(https://github.com/asaskevich/govalidator) A package of validators and sanitizers for strings, structs and collections** <br />
 
 Hotel Bookings is a Web Application project and self learning through Udemy..  <br>
