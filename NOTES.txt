@@ -131,3 +131,7 @@ Saving for later:
 # Completed - 69. Server side form validation IV  (eail validation)
 # Completed - 70. Displaying a response to user after posting form data
 # Completed - 71. Finishing up our response to user, and adding alerts
+# Completed - 72. An aside: Alternate Templating Engines
+# Completed - 73. Writing tests for our main package
+--> Used: $ go test -coverprofile=coverage.out && go tool cover -html=coverage.out
+# Starting - 74. Writing tests for our GET handlers
