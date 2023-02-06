@@ -135,3 +135,4 @@ Saving for later:
 # Completed - 73. Writing tests for our main package
 --> Used: $ go test -coverprofile=coverage.out && go tool cover -html=coverage.out
 # Completed - 74. Writing tests for our GET handlers
+# Completed - 75. Writing tests for our POST handlers
