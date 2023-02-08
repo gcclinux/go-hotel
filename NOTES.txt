@@ -139,4 +139,5 @@ Saving for later:
 # Completed - 76. Writing tests for our Render package I
 # Completed - 77. Writing tests for our Render package II
 # Completed - 78. Getting test coverage
-# Starting - 79. Exercise: Writing tests for the Forms package
+# Completed - 79. Exercise: Writing tests for the Forms package
+# Starting - 80. Solution to writing tests for the Forms package
