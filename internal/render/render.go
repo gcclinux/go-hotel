@@ -3,6 +3,7 @@ package render
 // render.go - lesson 30 - simple templating cache system
 import (
 	"bytes"
+	"errors"
 	"fmt"
 	"html/template"
 	"log"
@@ -34,7 +35,7 @@ func AddDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateDa
 }
 
 // renderTemplates is where we will be rendering all templates through
-func RenderTemplate(w http.ResponseWriter, r *http.Request, page string, templateData *models.TemplateData) {
+func RenderTemplate(w http.ResponseWriter, r *http.Request, page string, templateData *models.TemplateData) error {
 	var templatecache map[string]*template.Template
 
 	if app.UseCache {
@@ -48,7 +49,7 @@ func RenderTemplate(w http.ResponseWriter, r *http.Request, page string, templat
 	// get requested template from cache
 	myTemplate, ok := templatecache[page]
 	if !ok {
-		log.Fatal("Could not get template from template cash")
+		return errors.New("could not get template from template cash")
 	}
 
 	myBuffer := new(bytes.Buffer)
@@ -59,8 +60,9 @@ func RenderTemplate(w http.ResponseWriter, r *http.Request, page string, templat
 	_, err := myBuffer.WriteTo(w)
 	if err != nil {
 		log.Println("error writing template to browser", err)
+		return err
 	}
-
+	return nil
 }
 
 func CreateTemplateCache() (map[string]*template.Template, error) {
