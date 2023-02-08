@@ -111,7 +111,7 @@ func TestForm_IsEmail(t *testing.T) {
 	}
 
 	postedValues = url.Values{}
-	postedValues.Add("email", "me@here.com")
+	postedValues.Add("email", "ping@pong.com")
 	form = New(postedValues)
 
 	form.IsEmail("email")
