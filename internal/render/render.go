@@ -1,6 +1,5 @@
 package render
 
-// render.go - lesson 30 - simple templating cache system
 import (
 	"bytes"
 	"errors"

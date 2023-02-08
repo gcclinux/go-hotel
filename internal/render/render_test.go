@@ -47,6 +47,8 @@ func TestRenderTemplate(t *testing.T) {
 	if err == nil {
 		t.Error("render template that does not exist")
 	}
+
+	
 }
 
 func getSession() (*http.Request, error) {

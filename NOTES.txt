@@ -138,4 +138,5 @@ Saving for later:
 # Completed - 75. Writing tests for our POST handlers
 # Completed - 76. Writing tests for our Render package I
 # Completed - 77. Writing tests for our Render package II
-# Starting - 78. Getting test coverage
+# Completed - 78. Getting test coverage
+# Starting - 79. Exercise: Writing tests for the Forms package
