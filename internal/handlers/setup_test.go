@@ -7,6 +7,7 @@ import (
 	"myapp/internal/config"
 	"myapp/internal/models"
 	"myapp/internal/render"
+	"os"
 
 	"html/template"
 	"net/http"
@@ -30,6 +31,12 @@ func getRoutes() http.Handler {
 
 	// Change this to true if in prodution
 	app.InProduction = false
+
+	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
+	app.InfoLog = infoLog
+
+	errorLog := log.New(os.Stdout, "ERROR\t", log.Ldate|log.Ltime|log.Lshortfile)
+	app.ErrorLog = errorLog
 
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour

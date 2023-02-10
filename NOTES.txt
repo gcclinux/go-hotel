@@ -144,3 +144,5 @@ Saving for later:
 # Completed - 81. Making running our application easier
 # Completed - 82. Centralizing our error handling to a helpers package
 # Completed - 83. Using our ClientError and ServerError helper functions
+# Completed - 84. Updating our tests
+-->  % go test -v ./... (this runs all test from main folder to the next level folders also)
