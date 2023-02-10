@@ -143,4 +143,4 @@ Saving for later:
 # Completed - 80. Solution to writing tests for the Forms package
 # Completed - 81. Making running our application easier
 # Completed - 82. Centralizing our error handling to a helpers package
-83. Using our ClientError and ServerError helper functions
+# Completed - 83. Using our ClientError and ServerError helper functions
