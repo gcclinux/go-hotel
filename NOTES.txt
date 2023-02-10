@@ -146,3 +146,4 @@ Saving for later:
 # Completed - 83. Using our ClientError and ServerError helper functions
 # Completed - 84. Updating our tests
 -->  % go test -v ./... (this runs all test from main folder to the next level folders also)
+# Completed - 85. Installing PostgreSQL
