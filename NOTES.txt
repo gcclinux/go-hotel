@@ -149,3 +149,4 @@ Saving for later:
 # Completed - 85. Installing PostgreSQL
 # Completed - 86. Connecting to the database with DBeaver on a Mac
 # Completed - 87. Connecting to the database with DBeaver on Windows
+# Completed - 88. Basic SQL syntax (DBeaver)
