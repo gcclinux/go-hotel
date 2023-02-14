@@ -1,5 +1,4 @@
 Udemy - Building Modern Web Applications with Go (Golang)
-
 	
 # You never have to bother pointing a passing a pointer to a map.
 # You can just pass the map itself and that map will remain constant no matter where in the program it is accessed.
@@ -10,7 +9,6 @@ Udemy - Building Modern Web Applications with Go (Golang)
 # and that will actually store anything you want.
 # The problem is you have to cast it from what it is in the map back into what it needs to be in order to be useful for you.
 # So this is really kind of a kludge, and I wouldn't do that.
-
 
 # in GO a string is actually a slice of bytes or runes as runes are bytes.
 
