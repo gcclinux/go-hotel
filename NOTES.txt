@@ -148,3 +148,23 @@ Saving for later:
 # Completed - 86. Connecting to the database with DBeaver on a Mac
 # Completed - 87. Connecting to the database with DBeaver on Windows
 # Completed - 88. Basic SQL syntax (DBeaver)
+# Completed - 89. More complex queries (DBeaver)
+--> Examples:
+INSERT INTO public.people (first_name, last_name) VALUES('John', 'Smith');
+INSERT INTO public.emails (people_id, email_address) VALUES(2, 'mary@yahoo.uk');
+SELECT email_address from emails where people_id = 1;
+SELECT p.first_name, p.last_name, e.email_address from people p left join emails e on (e.people_id = p.id);
+SELECT p.first_name, p.last_name, e.email_address from people p left join emails e on (e.people_id = p.id) where p.id =1;
+SELECT p.first_name, p.last_name, e.email_address from people p left join emails e on (e.people_id = p.id) where p.first_name = 'John' and p.last_name = 'Smith';
+INSERT INTO public.phones (people_id, phone_humber) VALUES(1, '555-555-1234');
+INSERT INTO public.phones (people_id, phone_humber) VALUES(2, '555-444-1234');
+SELECT 
+	p.first_name, p.last_name, e.email_address, p2.phone_humber 
+from 
+	people p 
+	left join emails e on (e.people_id = p.id) 
+	left join phones p2 on (p.id = p2.people_id)
+where 
+	p.id = 1 OR p.id = 2
+order by p.id DESC;
+
