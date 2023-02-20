@@ -188,3 +188,4 @@ order by p.id DESC;
 --> Used: https://gobuffalo.io/documentation/database/fizz/
 
 # Completed - 93. Creating the rest of our database using migrations
+# Completed - 94. Setting up a foreign key
