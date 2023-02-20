@@ -168,3 +168,5 @@ where
 	p.id = 1 OR p.id = 2
 order by p.id DESC;
 
+# Completed - 90. Identifying database structure, and Entity Relationship Diagarams (SQLEditor)
+--> Downloaded FREE --> https://www.dbvis.com/download/
