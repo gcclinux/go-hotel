@@ -30,6 +30,72 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
+-- Name: reservations; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.reservations (
+    id integer NOT NULL,
+    first_name character varying(255) DEFAULT ''::character varying NOT NULL,
+    last_name character varying(255) DEFAULT ''::character varying NOT NULL,
+    email character varying(255) NOT NULL,
+    phone character varying(255) DEFAULT ''::character varying NOT NULL,
+    start_date date NOT NULL,
+    end_date date NOT NULL,
+    room_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.reservations OWNER TO postgres;
+
+--
+-- Name: restrictions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.restrictions (
+    id integer NOT NULL,
+    restriction_name character varying(255) DEFAULT ''::character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.restrictions OWNER TO postgres;
+
+--
+-- Name: room_restrictions; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.room_restrictions (
+    id integer NOT NULL,
+    start_date date NOT NULL,
+    end_date date NOT NULL,
+    room_id integer NOT NULL,
+    reservation_id integer NOT NULL,
+    restriction_id integer NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.room_restrictions OWNER TO postgres;
+
+--
+-- Name: rooms; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.rooms (
+    id integer NOT NULL,
+    room_name character varying(255) DEFAULT ''::character varying NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.rooms OWNER TO postgres;
+
+--
 -- Name: schema_migration; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -39,6 +105,24 @@ CREATE TABLE public.schema_migration (
 
 
 ALTER TABLE public.schema_migration OWNER TO postgres;
+
+--
+-- Name: users; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.users (
+    id integer NOT NULL,
+    email character varying(255) NOT NULL,
+    first_name character varying(255) DEFAULT ''::character varying NOT NULL,
+    last_name character varying(255) DEFAULT ''::character varying NOT NULL,
+    password character varying(60) NOT NULL,
+    access_level integer DEFAULT 1 NOT NULL,
+    created_at timestamp without time zone NOT NULL,
+    updated_at timestamp without time zone NOT NULL
+);
+
+
+ALTER TABLE public.users OWNER TO postgres;
 
 --
 -- Name: schema_migration schema_migration_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres

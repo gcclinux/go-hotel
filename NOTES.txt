@@ -173,3 +173,18 @@ order by p.id DESC;
 # Completed - 91. Install Soda (Buffalo is a framework for building web applications and go)
 --> Downloaded FREE --> https://gobuffalo.io/documentation/database/pop/
 # Completed - 92. Creating the users table using migrations
+--> % soda generate fizz CreateUserTable
+--> % soda migrate 
+--> % soda migrate down
+--> % soda generate fizz CreateReservationTable
+--> % soda migrate 
+--> % soda migrate down
+--> % soda generate fizz CreateRoomsTable
+--> % soda migrate 
+--> % soda migrate down
+--> % soda generate fizz CreateRestrictionsTable
+--> % soda migrate 
+--> % soda migrate down
+--> Used: https://gobuffalo.io/documentation/database/fizz/
+
+# Completed - 93. Creating the rest of our database using migrations
