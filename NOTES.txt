@@ -191,3 +191,5 @@ order by p.id DESC;
 # Completed - 94. Setting up a foreign key
 # Completed - 95. Setting up the rest of our foreign keys
 # Completed - 96. Adding Indices & Exercise
+# Completed - 97. Solution to Exercise
+
