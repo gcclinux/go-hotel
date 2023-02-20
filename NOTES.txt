@@ -172,4 +172,4 @@ order by p.id DESC;
 --> Downloaded FREE --> https://www.dbvis.com/
 # Completed - 91. Install Soda (Buffalo is a framework for building web applications and go)
 --> Downloaded FREE --> https://gobuffalo.io/documentation/database/pop/
-# Next - 92. Creating the users table using migrations
+# Completed - 92. Creating the users table using migrations
