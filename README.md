@@ -16,5 +16,10 @@ Javascript: ``<script src="https://unpkg.com/notie"></script>`` <br>
 **Uses SweetAlert2(https://sweetalert2.github.io/) beautiful, responsive, customizable popup boxes** <br>
 JavaScript: ``<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>`` <br>
 **Uses govalidator(https://github.com/asaskevich/govalidator) A package of validators and sanitizers for strings, structs and collections** <br />
+*$ go get github.com/asaskevich/govalidator* <br>
+**Uses the Buffalo (https://github.com/gobuffalo/pop/) framework for building web applications and go <br>**
+$ *go get github.com/gobuffalo/pop/...*  <br>
+$ *brew install gobuffalo/tap/pop*<br />
+$ *go install github.com/gobuffalo/pop/v6/soda@latest*<br />
 
 Hotel Bookings is a Web Application project and self learning through Udemy..  <br>

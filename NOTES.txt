@@ -169,4 +169,7 @@ where
 order by p.id DESC;
 
 # Completed - 90. Identifying database structure, and Entity Relationship Diagarams (SQLEditor)
---> Downloaded FREE --> https://www.dbvis.com/download/
+--> Downloaded FREE --> https://www.dbvis.com/
+# Completed - 91. Install Soda (Buffalo is a framework for building web applications and go)
+--> Downloaded FREE --> https://gobuffalo.io/documentation/database/pop/
+# Next - 92. Creating the users table using migrations
