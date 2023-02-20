@@ -189,3 +189,4 @@ order by p.id DESC;
 
 # Completed - 93. Creating the rest of our database using migrations
 # Completed - 94. Setting up a foreign key
+# Completed - 95. Setting up the rest of our foreign keys
