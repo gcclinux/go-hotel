@@ -192,4 +192,7 @@ order by p.id DESC;
 # Completed - 95. Setting up the rest of our foreign keys
 # Completed - 96. Adding Indices & Exercise
 # Completed - 97. Solution to Exercise
+# Completed - 97. Solution to Exercise
+# Completed - 98. How to connect a Go application to a database
+~ Starting - 99. Creating a Driver package
 
