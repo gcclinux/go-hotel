@@ -194,5 +194,6 @@ order by p.id DESC;
 # Completed - 97. Solution to Exercise
 # Completed - 97. Solution to Exercise
 # Completed - 98. How to connect a Go application to a database
-~ Starting - 99. Creating a Driver package
+# Completed - 99. Creating a Driver package (database connection pool)
+~ Starting - 100. Connecting to the database and adding the SQL connection to our Repository
 
