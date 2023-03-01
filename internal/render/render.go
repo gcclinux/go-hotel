@@ -20,8 +20,8 @@ var functions = template.FuncMap{}
 var app *config.AppConfig
 var pathToTemplates = "./html-source"
 
-// RenderTemplate sets the config for the templ8ate package
-func NewTemplates(a *config.AppConfig) {
+// NewRenderer sets the config for the templ8ate package
+func NewRenderer(a *config.AppConfig) {
 	app = a
 }
 
@@ -33,8 +33,8 @@ func AddDefaultData(td *models.TemplateData, r *http.Request) *models.TemplateDa
 	return td
 }
 
-// renderTemplates is where we will be rendering all templates through
-func RenderTemplate(w http.ResponseWriter, r *http.Request, page string, templateData *models.TemplateData) error {
+// Templates is where we will be rendering all templates through
+func Template(w http.ResponseWriter, r *http.Request, page string, templateData *models.TemplateData) error {
 	var templatecache map[string]*template.Template
 
 	if app.UseCache {

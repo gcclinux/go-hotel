@@ -196,4 +196,6 @@ order by p.id DESC;
 # Completed - 98. How to connect a Go application to a database
 # Completed - 99. Creating a Driver package (database connection pool)
 # Completed - 100. Connecting to the database and adding the SQL connection to our Repository (great session)
-Next 101. Setting up models
+# Completed - 101. Setting up models
+# Completed - 102. Cleaning up our code
+NEXT - 103. A word about ORMs

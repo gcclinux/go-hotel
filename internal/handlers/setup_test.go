@@ -54,7 +54,7 @@ func getRoutes() http.Handler {
 
 	// connet to database
 	log.Println("Connecting to database...")
-	db, err := driver.ConnectSQL("host=odroid port=5432 dbname=hotel user=ricardo password=Appl1cation")
+	db, err := driver.ConnectSQL("host=odroid port=5432 dbname=hotel user=testie password=pastie")
 	if err != nil {
 		log.Fatal("main.go cannot connect to database -->", err)
 	}
@@ -65,7 +65,7 @@ func getRoutes() http.Handler {
 	repo := NewRepo(&app, db)
 	NewHandlers(repo)
 
-	render.NewTemplates(&app)
+	render.NewRenderer(&app)
 
 	mux := chi.NewRouter()
 
