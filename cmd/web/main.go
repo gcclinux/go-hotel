@@ -66,7 +66,7 @@ func run() (*driver.DB, error) {
 
 	// connet to database
 	log.Println("Connecting to database...")
-	db, err := driver.ConnectSQL("host=odroid port=5432 dbname=hotel user=ricardo password=Appl1cat1on")
+	db, err := driver.ConnectSQL("host=odroid port=5432 dbname=hotel user=testie password=pastie")
 	if err != nil {
 		log.Fatal("main.go cannot connect to database -->", err)
 		return nil, err
