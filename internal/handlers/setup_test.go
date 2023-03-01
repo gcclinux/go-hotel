@@ -5,6 +5,7 @@ import (
 	"fmt"
 	"log"
 	"myapp/internal/config"
+	"myapp/internal/driver"
 	"myapp/internal/models"
 	"myapp/internal/render"
 	"os"
@@ -51,10 +52,17 @@ func getRoutes() http.Handler {
 		log.Fatal("setup_test.go cannot create template cache -->", err)
 	}
 
+	// connet to database
+	log.Println("Connecting to database...")
+	db, err := driver.ConnectSQL("host=odroid port=5432 dbname=hotel user=ricardo password=Appl1cation")
+	if err != nil {
+		log.Fatal("main.go cannot connect to database -->", err)
+	}
+
 	app.TemplateCache = tc
 	app.UseCache = true
 
-	repo := NewRepo(&app)
+	repo := NewRepo(&app, db)
 	NewHandlers(repo)
 
 	render.NewTemplates(&app)

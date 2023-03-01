@@ -4,10 +4,13 @@ import (
 	"encoding/json"
 	"fmt"
 	"myapp/internal/config"
+	"myapp/internal/driver"
 	"myapp/internal/forms"
 	"myapp/internal/helpers"
 	"myapp/internal/models"
 	"myapp/internal/render"
+	"myapp/internal/repository"
+	"myapp/internal/repository/dbrepo"
 	"net/http"
 )
 
@@ -17,12 +20,14 @@ var Repo *Repository
 // Repository is the repository type
 type Repository struct {
 	App *config.AppConfig
+	DB  repository.DatabaseRepo
 }
 
 // NewRepo creates a new repositorty
-func NewRepo(a *config.AppConfig) *Repository {
+func NewRepo(a *config.AppConfig, db *driver.DB) *Repository {
 	return &Repository{
 		App: a,
+		DB:  dbrepo.NewPostgresRepo(db.SQL, a),
 	}
 }
 
@@ -34,7 +39,7 @@ func NewHandlers(r *Repository) {
 // Home is the home page handler
 func (m *Repository) Home(w http.ResponseWriter, r *http.Request) {
 	// fmt.Println("handlers.go: app.InProduction", m.App.InProduction)
-
+	m.DB.AllUsers()
 	render.RenderTemplate(w, r, "home.page.tmpl", &models.TemplateData{})
 }
 

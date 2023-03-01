@@ -4,6 +4,7 @@ import (
 	"encoding/gob"
 	"log"
 	"myapp/internal/config"
+	"myapp/internal/driver"
 	"myapp/internal/handlers"
 	"myapp/internal/helpers"
 	"myapp/internal/models"
@@ -25,10 +26,11 @@ var errorLog *log.Logger
 // main is the main application function
 func main() {
 
-	err := run()
+	db, err := run()
 	if err != nil {
 		log.Fatal(err)
 	}
+	defer db.SQL.Close()
 
 	log.Println("Starting Application on port", portNumber)
 
@@ -41,7 +43,7 @@ func main() {
 	log.Fatal(err)
 }
 
-func run() error {
+func run() (*driver.DB, error) {
 	// Store data that we will be keeping in the session.
 	gob.Register(models.Reservation{})
 
@@ -62,19 +64,28 @@ func run() error {
 
 	app.Session = session
 
+	// connet to database
+	log.Println("Connecting to database...")
+	db, err := driver.ConnectSQL("host=odroid port=5432 dbname=hotel user=ricardo password=Appl1cat1on")
+	if err != nil {
+		log.Fatal("main.go cannot connect to database -->", err)
+		return nil, err
+	}
+	log.Println("Connected to database...")
+
 	myTemplateCache, err := render.CreateTemplateCache()
 	if err != nil {
 		log.Fatal("main.go cannot create template cache -->", err)
-		return err
+		return nil, err
 	}
 
 	app.TemplateCache = myTemplateCache
 	app.UseCache = false
 
-	repo := handlers.NewRepo(&app)
+	repo := handlers.NewRepo(&app, db)
 	handlers.NewHandlers(repo)
 	render.NewTemplates(&app)
 	helpers.NewHelpers(&app)
 
-	return nil
+	return db, nil
 }
