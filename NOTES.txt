@@ -199,4 +199,5 @@ order by p.id DESC;
 # Completed - 101. Setting up models
 # Completed - 102. Cleaning up our code
 # Completed - 103. A word about ORMs (example gorm.io, upper.io/v4) (Database access layer)
-NEXT - 17:07 - 104. Setting up database functions: inserting a reservation
+# Completed - 104. Setting up database functions: inserting a reservation
+# Completed - 105. Testing our insert reservation function
