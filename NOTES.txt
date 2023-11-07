@@ -201,4 +201,4 @@ order by p.id DESC;
 # Completed - 103. A word about ORMs (example gorm.io, upper.io/v4) (Database access layer)
 # Completed - 104. Setting up database functions: inserting a reservation
 # Completed - 105. Testing our insert reservation function
-106. Inserting Room Restrictions
+# Completed - 106. Inserting Room Restrictions
