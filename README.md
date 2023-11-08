@@ -2,9 +2,10 @@
 
 Hotel Bookings and reservations is a Web Application project, self toucht through Udemy
 
-Built in Go version 1.21.3 
+Built in Go version 1.21.4 
 
 Run: $ go run cmd/web/main.go cmd/web/middleware.go cmd/web/route.go
+Run: $ ./run.sh
 
 **Uses the chi router(https://github.com/go-chi/chi/) router for HTTP services**<br>
 -->*go get -u github.com/go-chi/chi/v5*  <br>

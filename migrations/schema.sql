@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 12.13 (Ubuntu 12.13-1.pgdg20.04+1)
--- Dumped by pg_dump version 15.1
+-- Dumped from database version 12.16 (Ubuntu 12.16-1.pgdg20.04+1)
+-- Dumped by pg_dump version 16.0
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -62,7 +62,7 @@ CREATE SEQUENCE public.reservations_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.reservations_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.reservations_id_seq OWNER TO postgres;
 
 --
 -- Name: reservations_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -98,7 +98,7 @@ CREATE SEQUENCE public.restrictions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.restrictions_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.restrictions_id_seq OWNER TO postgres;
 
 --
 -- Name: restrictions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -116,7 +116,7 @@ CREATE TABLE public.room_restrictions (
     start_date date NOT NULL,
     end_date date NOT NULL,
     room_id integer NOT NULL,
-    reservation_id integer NOT NULL,
+    reservation_id integer,
     restriction_id integer NOT NULL,
     created_at timestamp without time zone NOT NULL,
     updated_at timestamp without time zone NOT NULL
@@ -138,7 +138,7 @@ CREATE SEQUENCE public.room_restrictions_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.room_restrictions_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.room_restrictions_id_seq OWNER TO postgres;
 
 --
 -- Name: room_restrictions_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -174,7 +174,7 @@ CREATE SEQUENCE public.rooms_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.rooms_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.rooms_id_seq OWNER TO postgres;
 
 --
 -- Name: rooms_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
@@ -225,7 +225,7 @@ CREATE SEQUENCE public.users_id_seq
     CACHE 1;
 
 
-ALTER TABLE public.users_id_seq OWNER TO postgres;
+ALTER SEQUENCE public.users_id_seq OWNER TO postgres;
 
 --
 -- Name: users_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
