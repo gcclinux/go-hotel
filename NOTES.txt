@@ -202,3 +202,5 @@ order by p.id DESC;
 # Completed - 104. Setting up database functions: inserting a reservation
 # Completed - 105. Testing our insert reservation function
 # Completed - 106. Inserting Room Restrictions 
+# Completed - 107. Searching for availability by room
+108. Searching for availablity for all rooms
