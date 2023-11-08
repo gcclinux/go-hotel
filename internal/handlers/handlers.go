@@ -2,7 +2,6 @@ package handlers
 
 import (
 	"encoding/json"
-	"fmt"
 	"myapp/internal/config"
 	"myapp/internal/driver"
 	"myapp/internal/forms"
@@ -74,14 +73,58 @@ func (m *Repository) Availability(w http.ResponseWriter, r *http.Request) {
 
 // PostAvailability is the PostAvailability search page used by the handler
 func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
-	// And that directive says, take whatever you see inside the parentheses, hear this string and convert
-	// it to a slice of bytes.
-	// w.Write([]byte("Post to search availability"))
 
 	start := r.Form.Get("start")
 	end := r.Form.Get("end")
 
-	w.Write([]byte(fmt.Sprintf("Start date is %s and end date is %s", start, end)))
+	layout := "2006-01-02"
+	startDate, err := time.Parse(layout, start)
+	if err != nil {
+		helpers.ServerError(w, err)
+		return
+	}
+	endDate, err := time.Parse(layout, end)
+	if err != nil {
+		helpers.ServerError(w, err)
+		return
+	}
+
+	rooms, err := m.DB.SearchAvailabilityForAllRooms(startDate, endDate)
+	if err != nil {
+		helpers.ServerError(w, err)
+		return
+	}
+
+	// Print loop into console / terminal
+	for _, i := range rooms {
+		m.App.InfoLog.Println("handlers.go ROOM:", i.ID, i.RoomName)
+	}
+	if len(rooms) == 0 {
+		m.App.InfoLog.Println("handlers.go ROOM: None available!")
+	}
+
+	if len(rooms) == 0 {
+		m.App.Session.Put(r.Context(), "error", "Date range not available")
+		http.Redirect(w, r, "/search-availability", http.StatusSeeOther)
+		return
+	}
+
+	data := make(map[string]interface{})
+	data["rooms"] = rooms
+
+	res := models.Reservation{
+		StartDate: time.Time{},
+		EndDate:   time.Time{},
+	}
+
+	m.App.Session.Put(r.Context(), "reservation", res)
+
+	render.Template(w, r, "choose-room.page.tmpl", &models.TemplateData{
+		Data: data,
+	})
+
+	//Write to the browser window
+	//w.Write([]byte(fmt.Sprintf("Start date is %s and end date is %s", start, end)))
 }
 
 type jsonResponse struct {
