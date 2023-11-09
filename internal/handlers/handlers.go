@@ -2,6 +2,7 @@ package handlers
 
 import (
 	"encoding/json"
+	"errors"
 	"myapp/internal/config"
 	"myapp/internal/driver"
 	"myapp/internal/forms"
@@ -97,6 +98,8 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	m.App.InfoLog.Println(rooms)
+
 	// Print loop into console / terminal
 	for _, i := range rooms {
 		m.App.InfoLog.Println("handlers.go ROOM:", i.ID, i.RoomName)
@@ -104,6 +107,7 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	if len(rooms) == 0 {
 		m.App.InfoLog.Println("handlers.go ROOM: None available!")
 	}
+	//End Print
 
 	if len(rooms) == 0 {
 		m.App.Session.Put(r.Context(), "error", "Date range not available")
@@ -154,12 +158,32 @@ func (m *Repository) AvailabilityJSON(w http.ResponseWriter, r *http.Request) {
 
 // Reservation renders the make a reservation page and display form
 func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
-	var emptyReservation models.Reservation
+
+	res, ok := m.App.Session.Get(r.Context(), "reservation").(models.Reservation)
+
+	if !ok {
+		helpers.ServerError(w, errors.New("cannot get reservation from session"))
+		return
+	}
+
+	layout := "2006-01-02"
+	sd := res.StartDate.Format(layout)
+	ed := res.EndDate.Format(layout)
+
+	m.App.InfoLog.Println("Startdate:", res.StartDate)
+	m.App.InfoLog.Println("SD:", res.StartDate.Format(layout))
+
+	stringMap := make(map[string]string)
+	stringMap["start_date"] = sd
+	stringMap["end_date"] = ed
+
 	data := make(map[string]interface{})
-	data["reservation"] = emptyReservation
+	data["reservation"] = res
 
 	render.Template(w, r, "make-reservation.page.tmpl", &models.TemplateData{
-		Form: forms.New(nil),
+		Form:      forms.New(nil),
+		Data:      data,
+		StringMap: stringMap,
 	})
 }
 
