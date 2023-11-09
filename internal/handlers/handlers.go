@@ -80,6 +80,9 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	start := r.Form.Get("start")
 	end := r.Form.Get("end")
 
+	m.App.InfoLog.Println("TEST-I", start)
+	m.App.InfoLog.Println("TEST-II", end)
+
 	layout := "2006-01-02"
 	startDate, err := time.Parse(layout, start)
 	if err != nil {
@@ -98,14 +101,15 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	m.App.InfoLog.Println(rooms)
+	m.App.InfoLog.Println("TEST-III", startDate)
+	m.App.InfoLog.Println("TEST-IV", endDate)
 
 	// Print loop into console / terminal
 	for _, i := range rooms {
-		m.App.InfoLog.Println("handlers.go ROOM:", i.ID, i.RoomName)
+		m.App.InfoLog.Println("handlers.go TEST-V:", i.ID, i.RoomName)
 	}
 	if len(rooms) == 0 {
-		m.App.InfoLog.Println("handlers.go ROOM: None available!")
+		m.App.InfoLog.Println("handlers.go TEST-V: None available!")
 	}
 	//End Print
 
