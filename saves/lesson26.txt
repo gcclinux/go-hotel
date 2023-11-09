@@ -1,5 +1,0 @@
-# Lesson 26 A note for Windows Users (NO CODING)
-# Mac / Linux execute
---> go run *.go
-# Windows users execute or (Linux & Mac)
---> go run .
