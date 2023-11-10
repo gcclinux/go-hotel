@@ -236,4 +236,19 @@ INFO    2023/11/09 14:42:27 SD: 0001-01-01
 
 Can someone please advise where I am going wrong, I've gone over the last 3 lessons and can't find where I made an error
 
-https://github.com/gcclinux/go-hotel
+
+Issue Fixed in func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request){}
+
+CHANGED FROM
+
+res := models.Reservation{
+    StartDate: time.Time{},
+    EndDate: time.Time{},
+}
+
+TO
+
+    res := models.Reservation{
+        StartDate: startDate,
+        EndDate:   endDate,
+    }

@@ -80,9 +80,6 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	start := r.Form.Get("start")
 	end := r.Form.Get("end")
 
-	m.App.InfoLog.Println("TEST-I", start)
-	m.App.InfoLog.Println("TEST-II", end)
-
 	layout := "2006-01-02"
 	startDate, err := time.Parse(layout, start)
 	if err != nil {
@@ -101,18 +98,6 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	m.App.InfoLog.Println("TEST-III", startDate)
-	m.App.InfoLog.Println("TEST-IV", endDate)
-
-	// Print loop into console / terminal
-	for _, i := range rooms {
-		m.App.InfoLog.Println("handlers.go TEST-V:", i.ID, i.RoomName)
-	}
-	if len(rooms) == 0 {
-		m.App.InfoLog.Println("handlers.go TEST-V: None available!")
-	}
-	//End Print
-
 	if len(rooms) == 0 {
 		m.App.Session.Put(r.Context(), "error", "Date range not available")
 		http.Redirect(w, r, "/search-availability", http.StatusSeeOther)
@@ -123,8 +108,8 @@ func (m *Repository) PostAvailability(w http.ResponseWriter, r *http.Request) {
 	data["rooms"] = rooms
 
 	res := models.Reservation{
-		StartDate: time.Time{},
-		EndDate:   time.Time{},
+		StartDate: startDate,
+		EndDate:   endDate,
 	}
 
 	m.App.Session.Put(r.Context(), "reservation", res)
@@ -173,9 +158,6 @@ func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
 	layout := "2006-01-02"
 	sd := res.StartDate.Format(layout)
 	ed := res.EndDate.Format(layout)
-
-	m.App.InfoLog.Println("TEST-VI Startdate:", res.StartDate)
-	m.App.InfoLog.Println("TEST-VII SD:", res.StartDate.Format(layout))
 
 	stringMap := make(map[string]string)
 	stringMap["start_date"] = sd
