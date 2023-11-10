@@ -206,21 +206,22 @@ order by p.id DESC;
 # Completed - 108. Searching for availablity for all rooms
 # Completed - 109. Connecting our handlers to our new database functions
 # Completed - 110. Connecting search availablity to the make reservation page
-111. Cleaning up our make reservation page and testing everything
+# ERRORS - 111. Cleaning up our make reservation page and testing everything
 
 Removed:
-                    <div class="form-group">
-                        <label for="start_date">Start Date:</label>
-                        <input class="form-control" type="text" name="start_date" id="start_date">
-                    </div>
+<div class="form-group">
+    <label for="start_date">Start Date:</label>
+    <input class="form-control" type="text" name="start_date" id="start_date">
+</div>
 
-                    <div class="form-group">
-                        <label for="end_date">End Date:</label>
-                        <input class="form-control" type="text" name="end_date" id="end_date">
-                    </div>
+<div class="form-group">
+    <label for="end_date">End Date:</label>
+    <input class="form-control" type="text" name="end_date" id="end_date">
+</div>
 
-                    <input type="hidden" name="room_id" value="1">
+<input type="hidden" name="room_id" value="1">
 
+ERROR
 Issue: Section 13: 111. Cleaning up our make reservation page and testing everything
 testing on Video 7:12 / 16:39 issue is date format returning  
 reservation Details
@@ -252,3 +253,6 @@ TO
         StartDate: startDate,
         EndDate:   endDate,
     }
+
+# Completed - 111. Cleaning up our make reservation page and testing everything
+112. Cleaning up the reservation summary page and improving validation

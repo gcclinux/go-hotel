@@ -155,6 +155,14 @@ func (m *Repository) Reservation(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	room, err := m.DB.GetRoomByID(res.RoomID)
+	if err != nil {
+		helpers.ServerError(w, err)
+		return
+	}
+
+	res.Room.RoomName = room.RoomName
+
 	layout := "2006-01-02"
 	sd := res.StartDate.Format(layout)
 	ed := res.EndDate.Format(layout)
@@ -184,12 +192,17 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 	sd := r.Form.Get("start_date")
 	ed := r.Form.Get("end_date")
 
+	// fmt.Printf("INFO TEST-STRING:  %+v\n", r.Form.Get("start_date"))
+	// fmt.Printf("INFO TEST-TIME:  %+v\n", sd)
+
 	layout := "2006-01-02"
+
 	startDate, err := time.Parse(layout, sd)
 	if err != nil {
 		helpers.ServerError(w, err)
 		return
 	}
+
 	endDate, err := time.Parse(layout, ed)
 	if err != nil {
 		helpers.ServerError(w, err)
