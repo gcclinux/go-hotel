@@ -256,4 +256,5 @@ TO
 
 # Completed - 111. Cleaning up our make reservation page and testing everything
 # Completed - 112. Cleaning up the reservation summary page and improving validation
-113. Searching for availability by Room
+# Completed - 113. Searching for availability by Room
+114. Providing feedback when searching by room, and connecting to the reservation page
