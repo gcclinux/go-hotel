@@ -260,4 +260,6 @@ TO
 # Completed - 114. Providing feedback when searching by room, and connecting to the reservation page
 # Completed - 115. Connecting the rooms page to the make reservation page
 # Completed - 116. Connecting the Major's Suite page, and extracting our javascript module
-# NEXT - 117. Adding a migration for seeding rooms
+# Completed - 117. Adding a migration for seeding rooms
+# Completed - 118. Adding a migration for seeding restrictions
+119. Creating a test database repository
