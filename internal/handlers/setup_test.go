@@ -3,16 +3,15 @@ package handlers
 import (
 	"encoding/gob"
 	"fmt"
+	"html/template"
 	"log"
 	"myapp/internal/config"
-	"myapp/internal/driver"
 	"myapp/internal/models"
 	"myapp/internal/render"
-	"os"
-
-	"html/template"
 	"net/http"
+	"os"
 	"path/filepath"
+	"testing"
 	"time"
 
 	"github.com/alexedwards/scs/v2"
@@ -23,14 +22,13 @@ import (
 
 var app config.AppConfig
 var session *scs.SessionManager
-var pathToTemplates = "./../../html-source"
+var pathToTemplates = "./../../templates"
 var functions = template.FuncMap{}
 
-func getRoutes() http.Handler {
-	// Store data that we will be keeping in the session.
+func TestMain(m *testing.M) {
 	gob.Register(models.Reservation{})
 
-	// Change this to true if in prodution
+	// change this to true when in production
 	app.InProduction = false
 
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
@@ -41,7 +39,7 @@ func getRoutes() http.Handler {
 
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
-	session.Cookie.Persist = true // false = cooky goes when browser closes
+	session.Cookie.Persist = true
 	session.Cookie.SameSite = http.SameSiteLaxMode
 	session.Cookie.Secure = app.InProduction
 
@@ -49,24 +47,20 @@ func getRoutes() http.Handler {
 
 	tc, err := CreateTestTemplateCache()
 	if err != nil {
-		log.Fatal("setup_test.go cannot create template cache -->", err)
-	}
-
-	// connet to database
-	log.Println("Connecting to database...")
-	db, err := driver.ConnectSQL("host=odroid port=5432 dbname=hotel user=testie password=pastie")
-	if err != nil {
-		log.Fatal("main.go cannot connect to database -->", err)
+		log.Fatal("cannot create template cache")
 	}
 
 	app.TemplateCache = tc
 	app.UseCache = true
 
-	repo := NewRepo(&app, db)
+	repo := NewRepo(&app, nil)
 	NewHandlers(repo)
-
 	render.NewRenderer(&app)
 
+	os.Exit(m.Run())
+}
+
+func getRoutes() http.Handler {
 	mux := chi.NewRouter()
 
 	mux.Use(middleware.Recoverer)
@@ -78,15 +72,15 @@ func getRoutes() http.Handler {
 	mux.Get("/generals-quarters", Repo.General)
 	mux.Get("/majors-suite", Repo.Major)
 
+	mux.Get("/search-availability", Repo.Availability)
+	mux.Post("/search-availability", Repo.PostAvailability)
+	mux.Post("/search-availability-json", Repo.AvailabilityJSON)
+
 	mux.Get("/contact", Repo.Contact)
 
 	mux.Get("/make-reservation", Repo.Reservation)
 	mux.Post("/make-reservation", Repo.PostReservation)
 	mux.Get("/reservation-summary", Repo.ReservationSummary)
-
-	mux.Get("/search-availability", Repo.Availability)
-	mux.Post("/search-availability", Repo.PostAvailability)
-	mux.Post("/search-availability-json", Repo.AvailabilityJSON)
 
 	fileServer := http.FileServer(http.Dir("./static/"))
 	mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
@@ -104,7 +98,6 @@ func NoSurf(next http.Handler) http.Handler {
 		Secure:   app.InProduction,
 		SameSite: http.SameSiteLaxMode,
 	})
-
 	return csrfHandler
 }
 
@@ -113,25 +106,19 @@ func SessionLoad(next http.Handler) http.Handler {
 	return session.LoadAndSave(next)
 }
 
+// CreateTestTemplateCache creates a template cache as a map
 func CreateTestTemplateCache() (map[string]*template.Template, error) {
-	// type 1 make mp
-	// myCache := make(map[string]*template.Template)
 
-	// type 2 mmaking map and then just use curly brackets and make it an empty map.
 	myCache := map[string]*template.Template{}
 
-	//get all of the files name *.page.tmpl from ./template
 	pages, err := filepath.Glob(fmt.Sprintf("%s/*.page.tmpl", pathToTemplates))
 	if err != nil {
 		return myCache, err
 	}
 
-	// range through all files ending with *.page.tmpl
 	for _, page := range pages {
-		// strip of the path and leave only the file name it self
 		name := filepath.Base(page)
-
-		templateset, err := template.New(name).Funcs(functions).ParseFiles(page)
+		ts, err := template.New(name).Funcs(functions).ParseFiles(page)
 		if err != nil {
 			return myCache, err
 		}
@@ -142,12 +129,14 @@ func CreateTestTemplateCache() (map[string]*template.Template, error) {
 		}
 
 		if len(matches) > 0 {
-			templateset, err = templateset.ParseGlob(fmt.Sprintf("%s/*.layout.tmpl", pathToTemplates))
+			ts, err = ts.ParseGlob(fmt.Sprintf("%s/*.layout.tmpl", pathToTemplates))
 			if err != nil {
 				return myCache, err
 			}
 		}
-		myCache[name] = templateset
+
+		myCache[name] = ts
 	}
+
 	return myCache, nil
 }

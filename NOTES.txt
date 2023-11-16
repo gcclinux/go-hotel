@@ -262,4 +262,22 @@ TO
 # Completed - 116. Connecting the Major's Suite page, and extracting our javascript module
 # Completed - 117. Adding a migration for seeding rooms
 # Completed - 118. Adding a migration for seeding restrictions
-119. Creating a test database repository
+# Completed - 119. Creating a test database repository
+# Completed - 120. Updating our existing tests to handle
+# Completed - 121. Improving our tests by handling multiple
+# Completed - 122. Testing Post handlers
+# Completed - 123. Testing AvailabilityJSON
+# Completed - 124. Completed Handler tests
+    Still getting testing errors but all code works
+
+125. Simplifying adding post parameters
+    // create our request body
+	postedData = url.Values{}
+	postedData.Add("start", "2060-01-01")
+	postedData.Add("end", "2060-01-02")
+	postedData.Add("room_id", "1")
+
+	req, _ = http.NewRequest("POST", "/search-availability-json", strings.NewReader(postedData.Encode()))
+
+# Completed - 125. Simplifying adding post parameters
+126. Sending email using the Standard Library

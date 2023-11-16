@@ -18,10 +18,10 @@ var testApp config.AppConfig
 
 func TestMain(m *testing.M) {
 
-	// Store data that we will be keeping in the session.
+	// what am I going to put in the session
 	gob.Register(models.Reservation{})
 
-	// Change this to true if in prodution
+	// change this to true when in production
 	testApp.InProduction = false
 
 	infoLog := log.New(os.Stdout, "INFO\t", log.Ldate|log.Ltime)
@@ -32,7 +32,7 @@ func TestMain(m *testing.M) {
 
 	session = scs.New()
 	session.Lifetime = 24 * time.Hour
-	session.Cookie.Persist = false // false = cooky goes when browser closes
+	session.Cookie.Persist = true
 	session.Cookie.SameSite = http.SameSiteLaxMode
 	session.Cookie.Secure = false
 
@@ -50,7 +50,9 @@ func (tw *myWriter) Header() http.Header {
 	return h
 }
 
-func (tw *myWriter) WriteHeader(i int) {}
+func (tw *myWriter) WriteHeader(i int) {
+
+}
 
 func (tw *myWriter) Write(b []byte) (int, error) {
 	length := len(b)
