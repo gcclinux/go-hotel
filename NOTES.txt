@@ -280,4 +280,4 @@ TO
 	req, _ = http.NewRequest("POST", "/search-availability-json", strings.NewReader(postedData.Encode()))
 
 # Completed - 125. Simplifying adding post parameters
-126. Sending email using the Standard Library
+# Completed - 126. Sending email using the Standard Library

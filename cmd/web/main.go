@@ -10,6 +10,7 @@ import (
 	"myapp/internal/models"
 	"myapp/internal/render"
 	"net/http"
+	"net/smtp"
 	"os"
 	"time"
 
@@ -31,6 +32,14 @@ func main() {
 		log.Fatal(err)
 	}
 	defer db.SQL.Close()
+
+	from := "me@here.com"
+	to := "you@here.com"
+	auth := smtp.PlainAuth("", from, "", "localhost")
+	err = smtp.SendMail("localhost:1025", auth, from, []string{to}, []byte("Hello from go-hotel"))
+	if err != nil {
+		log.Println("mail in main.go: ", err)
+	}
 
 	log.Println("Starting Application on port", portNumber)
 
