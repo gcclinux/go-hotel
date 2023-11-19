@@ -308,3 +308,5 @@ TO
             $ ~/go/bin/MailHog
 
 # Completed - 128. Installing Mailhog on a Mac for testing purposes
+# Completed - 129. Installing Mailhog on Windows for testing purposes
+130. Creating and sending mail notifications
