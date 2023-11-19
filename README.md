@@ -27,5 +27,7 @@ JavaScript: ``<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>`` <b
 **Uses PGX PostGreSQl drivers (https://github.com/jackc/pgx)**
 -->*go get github.com/jackc/pgconn* <br>
 -->*go get github.com/jackc/pgx/v5/* <br>
+**The best way to send emails in Go with SMTP Keep Alive and Timeout for Connect and Send**
+-->*go get github.com/xhit/go-simple-mail/v2 </br>
 
 Hotel Bookings is a Web Application project and self learning through Udemy..  <br>

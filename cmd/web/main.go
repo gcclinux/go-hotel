@@ -10,7 +10,6 @@ import (
 	"myapp/internal/models"
 	"myapp/internal/render"
 	"net/http"
-	"net/smtp"
 	"os"
 	"time"
 
@@ -18,6 +17,7 @@ import (
 )
 
 const portNumber = ":8080"
+const mailPort = 1025
 
 var app config.AppConfig
 var session *scs.SessionManager
@@ -31,17 +31,28 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	// Single line required to close the channel as soon as connection request no longer required
 	defer db.SQL.Close()
 
-	from := "me@here.com"
-	to := "you@here.com"
-	auth := smtp.PlainAuth("", from, "", "localhost")
-	err = smtp.SendMail("localhost:1025", auth, from, []string{to}, []byte("Hello from go-hotel"))
-	if err != nil {
-		log.Println("mail in main.go: ", err)
-	}
+	// Single line required to close the channel as soon as message sent rather than leaving it open forever
+	defer close(app.MailChan)
+
+	// Start listening again for the next meail
+	listenForMail()
+
+	// Test message when server started
+	// msg := models.MailData{
+	// 	To:      "you@there.com",
+	// 	From:    "me@here.com",
+	// 	Subject: "Server Started",
+	// 	Content: "Server Started from <strong><i>command line!</i></strong>",
+	// }
+
+	// app.MailChan <- msg
 
 	log.Println("Starting Application on port", portNumber)
+	log.Print("Starting Mail listen on port :", mailPort, "\n")
 
 	srv := &http.Server{
 		Addr:    portNumber,
@@ -58,6 +69,9 @@ func run() (*driver.DB, error) {
 	gob.Register(models.User{})
 	gob.Register(models.Room{})
 	gob.Register(models.Restriction{})
+
+	mailChan := make(chan models.MailData)
+	app.MailChan = mailChan
 
 	// Change this to true if in prodution
 	app.InProduction = false

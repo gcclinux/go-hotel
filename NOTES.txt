@@ -281,3 +281,30 @@ TO
 
 # Completed - 125. Simplifying adding post parameters
 # Completed - 126. Sending email using the Standard Library
+
+    	from := "me@here.com"
+        to := "you@there.com"
+        auth := smtp.PlainAuth("", from, "", "localhost")
+        err = smtp.SendMail("localhost:1025", auth, from, []string{to}, []byte("Hello from go-hotel"))
+        if err != nil {
+            log.Println("mail in main.go: ", err)
+        }
+
+127. Installing a mailer package and setting up a mail channel
+
+    The best way to send emails in Go with SMTP Keep Alive and Timeout for Connect and Send
+     Install: $ go get github.com/xhit/go-simple-mail/v2
+                go: downloading github.com/xhit/go-simple-mail/v2 v2.16.0
+                go: downloading github.com/toorop/go-dkim v0.0.0-20201103131630-e1cd1a0a5208
+                go: added github.com/toorop/go-dkim v0.0.0-20201103131630-e1cd1a0a5208
+                go: added github.com/xhit/go-simple-mail/v2 v2.16.0
+
+# Completed - 127. Installing a mailer package and setting up a mail channel
+
+128. Installing Mailhog on a Mac for testing purposes
+    Installing local test mail test server MailHog does not send email to server people only used for test 
+    Install: on Windows I used the go insatllation from Git Bash command line  
+            $ go install github.com/mailhog/MailHog@latest
+            $ ~/go/bin/MailHog
+
+# Completed - 128. Installing Mailhog on a Mac for testing purposes
