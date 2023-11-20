@@ -309,4 +309,6 @@ TO
 
 # Completed - 128. Installing Mailhog on a Mac for testing purposes
 # Completed - 129. Installing Mailhog on Windows for testing purposes
-130. Creating and sending mail notifications
+# Completed - 130. Creating and sending mail notifications
+# Completed - 131. Solution to sending notification to property owner
+132. Sending nicely formatted email using Foundation
