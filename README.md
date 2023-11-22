@@ -29,5 +29,7 @@ JavaScript: ``<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>`` <b
 -->*go get github.com/jackc/pgx/v5/* <br>
 **The best way to send emails in Go with SMTP Keep Alive and Timeout for Connect and Send**
 -->*go get github.com/xhit/go-simple-mail/v2 </br>
+**Making Emails Suck Less - Lesson 132**
+--> Download https://get.foundation/emails.html <br>
 
 Hotel Bookings is a Web Application project and self learning through Udemy..  <br>

@@ -1,5 +1,11 @@
 Udemy - Building Modern Web Applications with Go (Golang)
 	
+Initiate the project
+
+$ mkdir go-hotel
+$ cd  go-hotel
+$ go mod init github.com/gcclinux/myapp
+
 # You never have to bother pointing a passing a pointer to a map.
 # You can just pass the map itself and that map will remain constant no matter where in the program it is accessed.
 # Another point to know about maps is maps are programmatically built into the system, not sorted.
@@ -311,4 +317,5 @@ TO
 # Completed - 129. Installing Mailhog on Windows for testing purposes
 # Completed - 130. Creating and sending mail notifications
 # Completed - 131. Solution to sending notification to property owner
-132. Sending nicely formatted email using Foundation
+# Completed - 132. Sending nicely formatted email using Foundation
+133. Updating our tests

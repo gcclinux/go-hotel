@@ -65,8 +65,9 @@ type RoomRestriction struct {
 
 // MailData holds mail data for the message template.HTML so that the body contains HTML format
 type MailData struct {
-	To      string
-	From    string
-	Subject string
-	Content template.HTML
+	To       string
+	From     string
+	Subject  string
+	Content  template.HTML
+	Template string
 }

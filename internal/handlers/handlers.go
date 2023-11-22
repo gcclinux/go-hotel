@@ -294,14 +294,16 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 	`, reservation.FirstName, reservation.LastName, reservation.StartDate.Format("Mon, 02 Jan 2006"), reservation.EndDate.Format("Mon, 02 Jan 2006"))
 
 	msg := models.MailData{
-		To:      reservation.Email,
-		From:    "me@here.com",
-		Subject: "Reservation Confirmation",
-		Content: template.HTML(msgClient),
+		To:       reservation.Email,
+		From:     "me@here.com",
+		Subject:  "Client Reservation Confirmation",
+		Content:  template.HTML(msgClient),
+		Template: "basic.html",
 	}
 
 	m.App.MailChan <- msg
 
+	// send information to the owner
 	msgHost := `
 		<br><hr><br>
 		<strong>Above is the Client Confirmation</strong>
@@ -311,7 +313,7 @@ func (m *Repository) PostReservation(w http.ResponseWriter, r *http.Request) {
 	msg = models.MailData{
 		To:      "me@here.com",
 		From:    "me@here.com",
-		Subject: "Reservation Confirmation",
+		Subject: "Host Reservation Confirmation",
 		Content: template.HTML(msgClient + msgHost),
 	}
 

@@ -1,8 +1,11 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"myapp/internal/models"
+	"os"
+	"strings"
 	"time"
 
 	mail "github.com/xhit/go-simple-mail/v2"
@@ -41,7 +44,19 @@ func sendMsg(m models.MailData) {
 	email := mail.NewMSG()
 	email.SetFrom(m.From).AddTo(m.To).SetSubject(m.Subject)
 	//email.SetBody(mail.TextHTML, "Hello, <strong>World!</strong>")
-	email.SetBody(mail.TextHTML, string(m.Content))
+	if m.Template == "" {
+		email.SetBody(mail.TextHTML, string(m.Content))
+	} else {
+		data, err := os.ReadFile(fmt.Sprintf("email-templates/%s", m.Template))
+		if err != nil {
+			app.ErrorLog.Println(err)
+		}
+
+		mailTemplate := string(data)
+		// change the place_holder added [%body%] in the basic.html
+		msgToSend := strings.Replace(mailTemplate, "[%body%]", string(m.Content), 1)
+		email.SetBody(mail.TextHTML, msgToSend)
+	}
 
 	err = email.Send(client)
 	if err != nil {
